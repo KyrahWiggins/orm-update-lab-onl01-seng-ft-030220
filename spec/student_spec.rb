@@ -30,4 +30,21 @@ describe "Student" do
 it 'creates the students table in the database' do
 	       Student.create_table
     table_check_sql = "SELECT tbl_name FROM sqlite_master WHERE type='table' AND tbl_name='students';"
-end
+    expect(DB[:conn].execute(table_check_sql)[0]).to eq(['students'])
+	    end
+     end
+     describe "#drop_table" do
+	    it 'drops the students table from the database' do
+         Student.drop_table
+     table_check_sql = "SELECT tbl_name FROM sqlite_master WHERE type='table' AND tbl_name='students';"
+      expect(DB[:conn].execute(table_check_sql)[0]).to eq(nil)
+	    end
+	  end
+     describe "#save" do
+   it 'saves an instance of the Student class to the database and then sets the given students `id` attribute' do
+      sarah = Student.new("Sarah", "9th")
+      sarah.save
+      expect(DB[:conn].execute("SELECT * FROM students")).to eq([[1, "Sarah", "9th"]])
+      expect(sarah.id).to eq(1)
+		    end
+	  end
