@@ -24,7 +24,7 @@ describe "Student" do
     it 'has an id that defaults to `nil` on initialization' do
       expect(josh.id).to eq(nil)
     end
-end
+
 
 
 	   describe ".create_table" do
