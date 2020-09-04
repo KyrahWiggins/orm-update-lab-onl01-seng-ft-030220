@@ -47,4 +47,4 @@ it 'creates the students table in the database' do
       expect(DB[:conn].execute("SELECT * FROM students")).to eq([[1, "Sarah", "9th"]])
       expect(sarah.id).to eq(1)
 		    end
-	
+	end
