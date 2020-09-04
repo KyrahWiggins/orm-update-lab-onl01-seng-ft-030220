@@ -26,7 +26,6 @@ describe "Student" do
     end
 
 
-
 	   describe ".create_table" do
 it 'creates the students table in the database' do
 	       Student.create_table
